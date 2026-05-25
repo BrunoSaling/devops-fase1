@@ -44,5 +44,5 @@ resource "aws_security_group" "app" {
 output "sg_app_id" { value = aws_security_group.app.id }
 
 variable "nome_projeto" {}
-variable "ambiente"     {}
-variable "vpc_id"       {}
+variable "ambiente" {}
+variable "vpc_id" {}

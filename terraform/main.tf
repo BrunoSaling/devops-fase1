@@ -15,9 +15,9 @@ terraform {
 
   # Backend S3 para armazenar o state remotamente
   backend "s3" {
-    bucket = "devops-projeto-tfstate"
-    key    = "fase1/terraform.tfstate"
-    region = "us-east-1"
+    bucket  = "devops-projeto-tfstate"
+    key     = "fase1/terraform.tfstate"
+    region  = "us-east-1"
     encrypt = true
   }
 }
@@ -30,10 +30,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Projeto     = "DevOps-Fase1"
-      Ambiente    = var.ambiente
-      Gerenciado  = "Terraform"
-      Turma       = var.turma
+      Projeto    = "DevOps-Fase1"
+      Ambiente   = var.ambiente
+      Gerenciado = "Terraform"
+      Turma      = var.turma
     }
   }
 }
@@ -66,12 +66,12 @@ data "aws_ami" "amazon_linux" {
 module "vpc" {
   source = "./modules/vpc"
 
-  nome_projeto       = var.nome_projeto
-  ambiente           = var.ambiente
-  cidr_vpc           = var.cidr_vpc
-  azs                = slice(data.aws_availability_zones.available.names, 0, 2)
-  subnets_publicas   = var.subnets_publicas
-  subnets_privadas   = var.subnets_privadas
+  nome_projeto     = var.nome_projeto
+  ambiente         = var.ambiente
+  cidr_vpc         = var.cidr_vpc
+  azs              = slice(data.aws_availability_zones.available.names, 0, 2)
+  subnets_publicas = var.subnets_publicas
+  subnets_privadas = var.subnets_privadas
 }
 
 # ──────────────────────────────────────────
@@ -91,14 +91,14 @@ module "security_groups" {
 module "ec2_app" {
   source = "./modules/ec2"
 
-  nome_projeto     = var.nome_projeto
-  ambiente         = var.ambiente
-  ami_id           = data.aws_ami.amazon_linux.id
-  tipo_instancia   = var.tipo_instancia
-  subnet_id        = module.vpc.subnet_publica_ids[0]
-  sg_ids           = [module.security_groups.sg_app_id]
-  chave_ssh        = var.chave_ssh
-  user_data        = file("${path.module}/scripts/user_data.sh")
+  nome_projeto   = var.nome_projeto
+  ambiente       = var.ambiente
+  ami_id         = data.aws_ami.amazon_linux.id
+  tipo_instancia = var.tipo_instancia
+  subnet_id      = module.vpc.subnet_publica_ids[0]
+  sg_ids         = [module.security_groups.sg_app_id]
+  chave_ssh      = var.chave_ssh
+  user_data      = file("${path.module}/scripts/user_data.sh")
 }
 
 # ──────────────────────────────────────────

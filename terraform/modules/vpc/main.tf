@@ -55,13 +55,13 @@ resource "aws_route_table_association" "publica" {
 }
 
 # Outputs do módulo
-output "vpc_id"             { value = aws_vpc.main.id }
+output "vpc_id" { value = aws_vpc.main.id }
 output "subnet_publica_ids" { value = aws_subnet.publicas[*].id }
 output "subnet_privada_ids" { value = aws_subnet.privadas[*].id }
 
-variable "nome_projeto"     {}
-variable "ambiente"         {}
-variable "cidr_vpc"         {}
-variable "azs"              {}
+variable "nome_projeto" {}
+variable "ambiente" {}
+variable "cidr_vpc" {}
+variable "azs" {}
 variable "subnets_publicas" {}
 variable "subnets_privadas" {}

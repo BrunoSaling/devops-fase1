@@ -52,7 +52,7 @@ variable "subnets_privadas" {
 variable "tipo_instancia" {
   description = "Tipo da instância EC2"
   type        = string
-  default     = "t2.micro"  # Free tier elegível no AWS Academy
+  default     = "t2.micro" # Free tier elegível no AWS Academy
 }
 
 variable "chave_ssh" {

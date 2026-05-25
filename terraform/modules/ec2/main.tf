@@ -19,14 +19,14 @@ resource "aws_instance" "app" {
   tags = { Name = "${var.nome_projeto}-ec2-app-${var.ambiente}" }
 }
 
-output "ip_publico"   { value = aws_instance.app.public_ip }
-output "instance_id"  { value = aws_instance.app.id }
+output "ip_publico" { value = aws_instance.app.public_ip }
+output "instance_id" { value = aws_instance.app.id }
 
-variable "nome_projeto"   {}
-variable "ambiente"       {}
-variable "ami_id"         {}
+variable "nome_projeto" {}
+variable "ambiente" {}
+variable "ami_id" {}
 variable "tipo_instancia" {}
-variable "subnet_id"      {}
-variable "sg_ids"         {}
-variable "chave_ssh"      {}
-variable "user_data"      {}
+variable "subnet_id" {}
+variable "sg_ids" {}
+variable "chave_ssh" {}
+variable "user_data" {}

@@ -31,8 +31,8 @@ resource "aws_s3_bucket_public_access_block" "artefatos" {
 }
 
 output "bucket_name" { value = aws_s3_bucket.artefatos.bucket }
-output "bucket_arn"  { value = aws_s3_bucket.artefatos.arn }
+output "bucket_arn" { value = aws_s3_bucket.artefatos.arn }
 
 variable "nome_projeto" {}
-variable "ambiente"     {}
-variable "bucket_name"  {}
+variable "ambiente" {}
+variable "bucket_name" {}
